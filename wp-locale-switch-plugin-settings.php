@@ -17,6 +17,7 @@ class WP_Locale_Switch_Plugin_Settings {
 	 */
 	function init() {
 		register_setting( $this->group(), $this->field() );
+		register_setting( $this->group(), $this->wp_cache_support_field() );
 	}
 
 	/**
@@ -47,6 +48,10 @@ class WP_Locale_Switch_Plugin_Settings {
 		return 'locales';
 	}
 
+	public function wp_cache_support_field() {
+		return 'wp_cache_support';
+	}
+
 	/**
 	 *
 	 * @param $item
@@ -55,6 +60,17 @@ class WP_Locale_Switch_Plugin_Settings {
 	 */
 	function clear_locales( $item ) {
 		return trim( $item, ', ' );
+	}
+
+	/**
+	 * Return cache is enabled setting
+	 * How to use:
+	 * $plugin  = WP_Locale_Switch_Plugin::get_instance();
+	 * $bool = $plugin->settings->is_cache_enabled();
+	 * @return boolean
+	 */
+	function is_cache_enabled() {
+		return get_option( $this->wp_cache_support_field() ) === 'on';
 	}
 
 }

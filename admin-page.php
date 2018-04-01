@@ -18,6 +18,20 @@
                     </p>
                 </td>
             </tr>
+            <tr valign="top">
+                <th scope="row"><label for="wlsp-wp_cache_support">wp_cache_support</label></th>
+                <td>
+                    <input
+                            type="checkbox"
+                            name="<?php echo $this->settings->wp_cache_support_field() ?>"
+                            id="wlsp-wp_cache_support"
+						<?php echo checked( $this->settings->is_cache_enabled() ) ?>
+                    >
+                    <p>
+                        <small>Use cache ot not</small>
+                    </p>
+                </td>
+            </tr>
         </table>
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e( 'Save' ) ?>">
